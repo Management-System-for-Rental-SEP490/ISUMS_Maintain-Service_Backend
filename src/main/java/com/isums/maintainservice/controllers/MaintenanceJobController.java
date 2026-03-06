@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/maintain/jobs")
+@RequestMapping("/maintenance/jobs")
 @RequiredArgsConstructor
 public class MaintenanceJobController {
     private final MaintenanceJobService maintenanceJobService;
