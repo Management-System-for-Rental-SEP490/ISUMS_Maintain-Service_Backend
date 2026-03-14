@@ -6,6 +6,7 @@ import com.isums.maintainservice.domains.entities.MaintenanceJobHistory;
 import com.isums.maintainservice.domains.entities.PeriodicInspectionPlan;
 import com.isums.maintainservice.domains.entities.PlanHouse;
 import com.isums.maintainservice.domains.enums.JobStatus;
+import com.isums.maintainservice.domains.events.JobEvent;
 import com.isums.maintainservice.domains.events.JobScheduledEvent;
 import com.isums.maintainservice.infrastructures.abstracts.MaintenanceJobService;
 import com.isums.maintainservice.infrastructures.mappers.MaintenanceMapper;
@@ -114,7 +115,7 @@ public class MaintenanceJobServiceImpl implements MaintenanceJobService {
     }
 
     @Override
-    public void markScheduled(JobScheduledEvent event) {
+    public void markScheduled(JobEvent event) {
         MaintenanceJob job = maintenanceJobRepository.findById(event.getJobId())
                 .orElseThrow();
 
@@ -145,7 +146,7 @@ public class MaintenanceJobServiceImpl implements MaintenanceJobService {
         }
     }
 
-    private void saveHistory(MaintenanceJob job,JobScheduledEvent event){
+    private void saveHistory(MaintenanceJob job,JobEvent event){
         MaintenanceJobHistory history = new MaintenanceJobHistory();
 
         history.setJobId(job.getId());

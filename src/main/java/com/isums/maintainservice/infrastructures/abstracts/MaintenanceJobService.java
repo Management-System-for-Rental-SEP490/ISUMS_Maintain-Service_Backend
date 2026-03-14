@@ -2,6 +2,7 @@ package com.isums.maintainservice.infrastructures.abstracts;
 
 import com.isums.maintainservice.domains.dtos.MaintainJobDTO.MaintenanceJobDto;
 import com.isums.maintainservice.domains.enums.JobStatus;
+import com.isums.maintainservice.domains.events.JobEvent;
 import com.isums.maintainservice.domains.events.JobScheduledEvent;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface MaintenanceJobService {
     MaintenanceJobDto getJobById(UUID jobId);
     List<MaintenanceJobDto> getJobByHouseId(UUID houseId);
     List<MaintenanceJobDto> getJobsByStatus(JobStatus status);
-    void markScheduled(JobScheduledEvent event);
+    void markScheduled(JobEvent event);
 }
